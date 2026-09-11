@@ -438,6 +438,329 @@
         }
     }
 
+/* 
+about us updated */
+
+/* =====================================================
+   FULL BACKGROUND IMAGE ABOUT SECTION
+===================================================== */
+
+.about-background {
+    position: relative;
+    min-height: 650px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    isolation: isolate;
+}
+
+
+/* BACKGROUND IMAGE */
+
+.about-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
+
+.about-bg img {
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+
+    /* Makes the image feel more cinematic */
+    transform: scale(1.02);
+}
+
+
+/* DARK GRADIENT OVER IMAGE */
+
+.about-bg-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(4, 12, 24, 0.96) 0%,
+            rgba(4, 12, 24, 0.82) 35%,
+            rgba(4, 12, 24, 0.48) 65%,
+            rgba(4, 12, 24, 0.72) 100%
+        );
+
+    z-index: 1;
+}
+
+
+/* CONTENT */
+
+.about-content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+
+/* TOP AREA */
+
+.about-top {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+
+/* LOGO */
+
+.about-logo {
+    width: 190px;
+    height: 190px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background: rgba(7, 17, 31, 0.72);
+
+    border: 1px solid rgba(255, 107, 53, 0.45);
+
+    border-radius: 28px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35),
+        inset 0 0 30px rgba(255, 107, 53, 0.04);
+}
+
+.about-logo img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* TEXT */
+
+.about-text {
+    max-width: 760px;
+}
+
+.about-text .section-label {
+    color: #ff6b35;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+.about-text .section-heading {
+    color: #ffffff;
+
+    font-size: clamp(38px, 4vw, 58px);
+    line-height: 1.08;
+
+    margin-bottom: 25px;
+}
+
+.about-text .section-description {
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 18px;
+    line-height: 1.8;
+
+    max-width: 700px;
+}
+
+
+/* BOTTOM CARD */
+
+.about-bottom {
+    margin-top: 55px;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.about-box {
+    width: min(500px, 100%);
+
+    padding: 30px;
+
+    background: rgba(7, 17, 31, 0.78);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-left: 3px solid #ff6b35;
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.30);
+}
+
+
+.about-box h3 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+
+.about-box p {
+    color: rgba(255, 255, 255, 0.72);
+
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+
+/* HIGHLIGHT */
+
+.about-highlight {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+
+.highlight-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ff6b35;
+
+    color: #ffffff;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+
+.highlight-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+.highlight-text strong {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+
+.highlight-text span {
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .about-background {
+        min-height: auto;
+    }
+
+    .about-content {
+        padding-top: 75px;
+        padding-bottom: 75px;
+    }
+
+    .about-top {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .about-logo {
+        width: 140px;
+        height: 140px;
+        padding: 20px;
+    }
+
+    .about-text .section-heading {
+        font-size: 40px;
+    }
+
+    .about-bottom {
+        justify-content: flex-start;
+        margin-top: 40px;
+    }
+
+    .about-bg-overlay {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(4, 12, 24, 0.92) 0%,
+                rgba(4, 12, 24, 0.78) 50%,
+                rgba(4, 12, 24, 0.95) 100%
+            );
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .about-content {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .about-logo {
+        width: 115px;
+        height: 115px;
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    .about-text .section-heading {
+        font-size: 32px;
+    }
+
+    .about-text .section-description {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .about-box {
+        padding: 24px;
+    }
+
+    .about-box h3 {
+        font-size: 21px;
+    }
+}
+
+
+
     /* =====================================================
        HERO VISUAL
     ===================================================== */
@@ -1663,86 +1986,76 @@
          ABOUT US
     ================================================= -->
 
-    <section class="about" id="about">
+   
+<section class="about about-background" id="about">
 
-        <div class="container">
+    <div class="about-bg">
+        <img src="image1.jpg"
+             alt="Modern logistics transportation and freight operations"
+             loading="lazy">
+        <div class="about-bg-overlay"></div>
+    </div>
 
-            <div class="about-grid">
+    <div class="container about-content">
 
-                <div class="image-frame about-visual">
+        <div class="about-top">
 
-                    <img
-                        src="containers-port.jpg"
-                        alt="Modern logistics warehouse and freight trucks"
-                        loading="lazy">
+            <div class="about-logo">
+                <img src="withoutbglogo.png"
+                     alt="G N Deal Made Services logo">
+            </div>
 
-                    <div class="image-overlay"></div>
+            <div class="about-text">
 
-                    <div class="image-logo-badge">
-                        <img src="withoutbglogo.png"
-                             alt="G N Deal Made Services logo">
-                    </div>
-
-                    <div class="image-caption">
-                        <strong>Built for busy operations</strong>
-                        <span>Organized freight movement backed by dedicated support.</span>
-                    </div>
-
+                <div class="section-label">
+                    About Us
                 </div>
 
-                <div>
+                <h2 class="section-heading">
+                    Reliable support for businesses that keep moving.
+                </h2>
 
-                    <div class="section-label">
-                        About Us
+                <p class="section-description">
+                    We help Canadian businesses reduce operating
+                    costs by providing reliable dispatch, customer
+                    service, and back-office support from a dedicated
+                    team.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="about-bottom">
+
+            <div class="about-box">
+
+                <h3>
+                    Best Customer Service
+                </h3>
+
+                <p>
+                    We provide dedicated support designed to help
+                    Canadian businesses operate efficiently while
+                    reducing operating costs.
+                </p>
+
+                <div class="about-highlight">
+
+                    <div class="highlight-icon">
+                        ✓
                     </div>
 
-                    <h2 class="section-heading">
-                        Reliable support for businesses that keep moving.
-                    </h2>
+                    <div class="highlight-text">
 
-                    <p class="section-description">
+                        <strong>
+                            Dedicated Team
+                        </strong>
 
-                        We help Canadian businesses reduce operating
-                        costs by providing reliable dispatch, customer
-                        service, and back-office support from a dedicated
-                        team.
-
-                    </p>
-
-                </div>
-
-
-                <div class="about-box">
-
-                    <h3>
-                        Best Customer Service
-                    </h3>
-
-                    <p>
-
-                        We provide dedicated support designed to help
-                        Canadian businesses operate efficiently while
-                        reducing operating costs.
-
-                    </p>
-
-                    <div class="about-highlight">
-
-                        <div class="highlight-icon">
-                            ✓
-                        </div>
-
-                        <div class="highlight-text">
-
-                            <strong>
-                                Dedicated Team
-                            </strong>
-
-                            <span>
-                                Reliable support for your business
-                            </span>
-
-                        </div>
+                        <span>
+                            Reliable support for your business
+                        </span>
 
                     </div>
 
@@ -1752,7 +2065,11 @@
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
+
 
 
     <!-- =================================================
@@ -1910,7 +2227,7 @@
 
                 <div class="gallery-card image-frame">
                     <img
-                        src="truck-transport.jpg"
+                        src="image2.jpg"
                         alt="Freight trucks and containers at a modern warehouse"
                         loading="lazy">
                     <div class="image-overlay"></div>
@@ -1922,7 +2239,7 @@
 
                 <div class="gallery-card image-frame">
                     <img
-                        src="containers-port.jpg"
+                        src="image1.jpg"
                         alt="Aerial view of a large logistics warehouse"
                         loading="lazy">
                     <div class="image-overlay"></div>
@@ -1934,7 +2251,7 @@
 
                 <div class="gallery-card image-frame">
                     <img
-                        src="container-ship.jpg"
+                        src="iamge3.jpg"
                         alt="Night logistics operations with trucks and containers"
                         loading="lazy">
                     <div class="image-overlay"></div>
