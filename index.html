@@ -282,6 +282,162 @@
         transform: translateY(-3px);
     }
 
+
+    /* =====================================================
+       LOGISTICS IMAGERY
+    ===================================================== */
+
+    .image-frame {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 30px 80px rgba(0,0,0,.32);
+        isolation: isolate;
+    }
+
+    .image-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform .7s ease;
+    }
+
+    .image-frame:hover img {
+        transform: scale(1.045);
+    }
+
+    .image-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(135deg, rgba(7,17,31,.08), rgba(7,17,31,.72)),
+            linear-gradient(180deg, transparent 45%, rgba(7,17,31,.65));
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .image-logo-badge {
+        position: absolute;
+        z-index: 3;
+        left: 24px;
+        bottom: 24px;
+        width: 88px;
+        height: 88px;
+        padding: 12px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background: rgba(7,17,31,.72);
+        border: 1px solid rgba(255,255,255,.18);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 15px 35px rgba(0,0,0,.3);
+    }
+
+    .image-logo-badge img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .image-caption {
+        position: absolute;
+        z-index: 3;
+        right: 24px;
+        bottom: 24px;
+        max-width: 220px;
+        text-align: right;
+    }
+
+    .image-caption strong {
+        display: block;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.05rem;
+        margin-bottom: 5px;
+    }
+
+    .image-caption span {
+        color: #dbeafe;
+        font-size: .76rem;
+        line-height: 1.5;
+    }
+
+    .about-visual {
+        min-height: 430px;
+        border-radius: 28px;
+    }
+
+    .about-visual .image-logo-badge {
+        left: 22px;
+        bottom: 22px;
+    }
+
+    .industry-visual {
+        background: #0b1728;
+    }
+
+    .industry-visual .industry-photo {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: .68;
+        transition: transform .7s ease, opacity .4s ease;
+    }
+
+    .industry-visual:hover .industry-photo {
+        transform: scale(1.045);
+        opacity: .78;
+    }
+
+    .industry-visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(135deg, rgba(7,17,31,.32), rgba(7,17,31,.76)),
+            radial-gradient(circle at 25% 20%, rgba(59,130,246,.22), transparent 38%),
+            radial-gradient(circle at 80% 80%, rgba(255,107,53,.18), transparent 38%);
+        z-index: 1;
+    }
+
+    .industry-visual .industry-center {
+        position: relative;
+        z-index: 2;
+        backdrop-filter: blur(12px);
+    }
+
+    @media (max-width: 650px) {
+        .about-visual {
+            min-height: 340px;
+            border-radius: 22px;
+        }
+
+        .image-logo-badge {
+            width: 68px;
+            height: 68px;
+            left: 16px;
+            bottom: 16px;
+            padding: 9px;
+            border-radius: 15px;
+        }
+
+        .image-caption {
+            right: 16px;
+            bottom: 16px;
+            max-width: 170px;
+        }
+
+        .image-caption strong {
+            font-size: .9rem;
+        }
+
+        .image-caption span {
+            font-size: .68rem;
+        }
+    }
+
     /* =====================================================
        HERO VISUAL
     ===================================================== */
@@ -380,6 +536,104 @@
 
     .card-value p {
         margin-bottom: 2px;
+    }
+
+
+    .operations-gallery {
+        padding: 110px 0;
+        background: #07111f;
+    }
+
+    .gallery-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 40px;
+        margin-bottom: 45px;
+    }
+
+    .gallery-header .section-heading {
+        margin-bottom: 0;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: 1.15fr .925fr .925fr;
+        gap: 18px;
+    }
+
+    .gallery-card {
+        min-height: 360px;
+        border-radius: 24px;
+    }
+
+    .gallery-card:first-child {
+        min-height: 430px;
+    }
+
+    .gallery-card img {
+        position: absolute;
+        inset: 0;
+    }
+
+    .gallery-copy {
+        position: absolute;
+        left: 25px;
+        right: 25px;
+        bottom: 24px;
+        z-index: 3;
+    }
+
+    .gallery-copy span {
+        display: block;
+        color: var(--primary);
+        font-size: .72rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        margin-bottom: 7px;
+    }
+
+    .gallery-copy strong {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.25rem;
+    }
+
+    @media (max-width: 950px) {
+        .gallery-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .gallery-card:first-child {
+            grid-column: span 2;
+        }
+
+        .gallery-header {
+            display: block;
+        }
+
+        .gallery-header .section-description {
+            margin-top: 20px;
+        }
+    }
+
+    @media (max-width: 650px) {
+        .operations-gallery {
+            padding: 75px 0;
+        }
+
+        .gallery-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .gallery-card:first-child {
+            grid-column: auto;
+        }
+
+        .gallery-card,
+        .gallery-card:first-child {
+            min-height: 300px;
+            border-radius: 20px;
+        }
     }
 
     /* =====================================================
@@ -1206,6 +1460,21 @@
 </style>
 ```
 
+
+<style>
+/* Final visual polish for local, brand-neutral logistics imagery */
+.hero-image.image-frame { min-height: 560px; }
+.hero-image.image-frame > img { object-position: center; }
+.operations-gallery .gallery-card img { object-position: center; }
+.about-visual img { object-position: center; }
+@media (max-width: 900px) {
+  .hero-image.image-frame { min-height: 420px; }
+}
+@media (max-width: 600px) {
+  .hero-image.image-frame { min-height: 300px; }
+}
+</style>
+
 </head>
 
 <body>
@@ -1333,17 +1602,31 @@
 
                 <div class="hero-visual">
 
-                    <div class="hero-image">
+                    <div class="hero-image image-frame">
 
-                        <img src="withoutbglogo.png"
-                             alt="G N Deal Made Services">
+                        <img
+                            src="hero-logistics.jpg"
+                            alt="Modern logistics warehouse with freight trucks"
+                            loading="eager">
+
+                        <div class="image-overlay"></div>
+
+                        <div class="image-logo-badge">
+                            <img src="withoutbglogo.png"
+                                 alt="G N Deal Made Services logo">
+                        </div>
+
+                        <div class="image-caption">
+                            <strong>Logistics in motion</strong>
+                            <span>Dispatch, freight support and dependable operations.</span>
+                        </div>
 
                     </div>
 
 
                     <!-- PHONE CARD -->
 
-                    <div class="info-card phone-card">
+                    <!-- <div class="info-card phone-card">
 
                         <span class="card-label">
                             Contact
@@ -1361,12 +1644,12 @@
 
                         </div>
 
-                    </div>
+                    </div> -->
 
 
                     <!-- ADDRESS CARD -->
 
-                    <div class="info-card address-card">
+                    <!-- <div class="info-card address-card">
 
                         <span class="card-label">
                             Address
@@ -1379,7 +1662,7 @@
 
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -1399,6 +1682,27 @@
         <div class="container">
 
             <div class="about-grid">
+
+                <div class="image-frame about-visual">
+
+                    <img
+                        src="containers-port.jpg"
+                        alt="Modern logistics warehouse and freight trucks"
+                        loading="lazy">
+
+                    <div class="image-overlay"></div>
+
+                    <div class="image-logo-badge">
+                        <img src="withoutbglogo.png"
+                             alt="G N Deal Made Services logo">
+                    </div>
+
+                    <div class="image-caption">
+                        <strong>Built for busy operations</strong>
+                        <span>Organized freight movement backed by dedicated support.</span>
+                    </div>
+
+                </div>
 
                 <div>
 
@@ -1592,6 +1896,73 @@
 
     </section>
 
+
+
+    <!-- =================================================
+         LOGISTICS OPERATIONS VISUALS
+    ================================================= -->
+
+    <section class="operations-gallery">
+
+        <div class="container">
+
+            <div class="gallery-header">
+                <div>
+                    <div class="section-label">Operations</div>
+                    <h2 class="section-heading">
+                        The work behind every shipment.
+                    </h2>
+                </div>
+
+                <p class="section-description">
+                    From warehouse floors to freight lanes, our support keeps
+                    logistics operations organized and moving forward.
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+
+                <div class="gallery-card image-frame">
+                    <img
+                        src="truck-transport.jpg"
+                        alt="Freight trucks and containers at a modern warehouse"
+                        loading="lazy">
+                    <div class="image-overlay"></div>
+                    <div class="gallery-copy">
+                        <span>01</span>
+                        <strong>Freight & Transportation</strong>
+                    </div>
+                </div>
+
+                <div class="gallery-card image-frame">
+                    <img
+                        src="containers-port.jpg"
+                        alt="Aerial view of a large logistics warehouse"
+                        loading="lazy">
+                    <div class="image-overlay"></div>
+                    <div class="gallery-copy">
+                        <span>02</span>
+                        <strong>Distribution & Warehousing</strong>
+                    </div>
+                </div>
+
+                <div class="gallery-card image-frame">
+                    <img
+                        src="container-ship.jpg"
+                        alt="Night logistics operations with trucks and containers"
+                        loading="lazy">
+                    <div class="image-overlay"></div>
+                    <div class="gallery-copy">
+                        <span>03</span>
+                        <strong>24/7 Operations</strong>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
     <!-- =================================================
          OUR CLIENTS
@@ -1913,7 +2284,18 @@
                 </div>
 
 
-                <div class="industry-visual">
+                <div class="industry-visual image-frame">
+
+                    <img
+                        class="industry-photo"
+                        src="containers-port.jpg"
+                        alt="Aerial view of a logistics distribution center"
+                        loading="lazy">
+
+                    <div class="image-logo-badge">
+                        <img src="withoutbglogo.png"
+                             alt="G N Deal Made Services logo">
+                    </div>
 
                     <div class="industry-center">
 
