@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+```
 <title>G N Deal Made Services — Best Customer Service</title>
 
 <meta name="description"
@@ -1629,10 +1630,6 @@ about us updated */
             height: 55px;
         }
 
-        .nav-links {
-            display: none;
-        }
-
         .hero {
             padding: 120px 0 60px;
         }
@@ -1779,7 +1776,156 @@ about us updated */
         }
     }
 
+
+    /* =====================================================
+       RESPONSIVE NAVIGATION — ALL SCREEN SIZES
+    ===================================================== */
+
+    .nav-toggle {
+        display: none;
+        width: 46px;
+        height: 46px;
+        padding: 10px;
+        border: 1px solid rgba(255,255,255,.14);
+        border-radius: 12px;
+        background: rgba(7,17,31,.72);
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+        flex-shrink: 0;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    .nav-toggle span {
+        display: block;
+        width: 21px;
+        height: 2px;
+        border-radius: 2px;
+        background: #ffffff;
+        transition: transform .25s ease, opacity .2s ease;
+    }
+
+    /* Prevent the desktop navigation from squeezing into the logo. */
+    @media (max-width: 1100px) {
+        .navbar {
+            gap: 20px;
+        }
+
+        .nav-links {
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-size: .86rem;
+        }
+
+        .nav-btn {
+            padding: 11px 16px;
+        }
+    }
+
+    /* Switch to a hamburger before the navigation can become crowded. */
+    @media (max-width: 900px) {
+        header {
+            position: absolute;
+        }
+
+        .navbar {
+            min-height: 80px;
+        }
+
+        .nav-toggle {
+            display: flex;
+        }
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: calc(100% - 2px);
+            left: 4%;
+            right: 4%;
+            width: auto;
+            margin: 0;
+            padding: 12px;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 4px;
+            background: rgba(7,17,31,.97);
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,.35);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .nav-links.is-open {
+            display: flex;
+        }
+
+        .nav-links li {
+            width: 100%;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 46px;
+            padding: 10px 14px;
+            border-radius: 10px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,.06);
+        }
+
+        .nav-btn {
+            justify-content: center;
+            margin-top: 4px;
+        }
+
+        .nav-toggle.is-open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-toggle.is-open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.is-open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    }
+
+    @media (max-width: 650px) {
+        .navbar {
+            min-height: 76px;
+        }
+
+        .nav-links {
+            left: 3%;
+            right: 3%;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .nav-toggle {
+            width: 42px;
+            height: 42px;
+        }
+
+        .nav-links {
+            left: 2%;
+            right: 2%;
+            padding: 10px;
+        }
+    }
+
 </style>
+```
 
 
 <style>
@@ -1800,6 +1946,10 @@ about us updated */
 
 <body>
 
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
 <header>
 
     <div class="container">
@@ -1815,7 +1965,7 @@ about us updated */
 
             </a>
 
-            <ul class="nav-links">
+            <ul class="nav-links" id="site-navigation">
 
                 <li>
                     <a href="#about">About Us</a>
@@ -1844,6 +1994,16 @@ about us updated */
                 </li>
 
             </ul>
+
+            <button class="nav-toggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="site-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
         </nav>
 
@@ -2753,6 +2913,54 @@ about us updated */
 
 </footer>
 ```
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector(".nav-toggle");
+    const menu = document.querySelector(".nav-links");
+
+    if (!toggle || !menu) return;
+
+    function closeMenu() {
+        menu.classList.remove("is-open");
+        toggle.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open navigation menu");
+    }
+
+    toggle.addEventListener("click", function () {
+        const isOpen = menu.classList.toggle("is-open");
+        toggle.classList.toggle("is-open", isOpen);
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+    });
+
+    menu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", function (event) {
+        if (
+            window.innerWidth <= 900 &&
+            menu.classList.contains("is-open") &&
+            !menu.contains(event.target) &&
+            !toggle.contains(event.target)
+        ) {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener("resize", function () {
+        if (window.innerWidth > 900) {
+            closeMenu();
+        }
+    });
+});
+</script>
 
 </body>
 </html>
